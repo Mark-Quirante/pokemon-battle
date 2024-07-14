@@ -25,128 +25,49 @@ async function fetchPokemonImage(id, pokemonName) {
 	}
 }
 
-function generatePokemonName() {
-	const pokemonArray = [
-		"bulbasaur",
-		"ivysaur",
-		"venusaur",
-		"charmander",
-		"charmeleon",
-		"charizard",
-		"squirtle",
-		"wartortle",
-		"blastoise",
-		"caterpie",
-		"metapod",
-		"butterfree",
-		"weedle",
-		"kakuna",
-		"beedrill",
-		"pidgey",
-		"pidgeotto",
-		"pidgeot",
-		"rattata",
-		"raticate",
-		"spearow",
-		"fearow",
-		"ekans",
-		"arbok",
-		"pikachu",
-		"raichu",
-		"sandshrew",
-		"sandslash",
-		"nidoran♀",
-		"nidorina",
-		"nidoqueen",
-		"nidoran♂",
-		"nidorino",
-		"nidoking",
-		"clefairy",
-		"clefable",
-		"vulpix",
-		"ninetales",
-		"jigglypuff",
-		"wigglytuff",
-		"zubat",
-		"golbat",
-		"oddish",
-		"gloom",
-		"vileplume",
-		"paras",
-		"parasect",
-		"venonat",
-		"venomoth",
-		"diglett",
-		"dugtrio",
-		"meowth",
-		"persian",
-		"psyduck",
-		"golduck",
-		"mankey",
-		"primeape",
-		"growlithe",
-		"arcanine",
-		"poliwag",
-		"poliwhirl",
-		"poliwrath",
-		"abra",
-		"kadabra",
-		"alakazam",
-		"machop",
-		"machoke",
-		"machamp",
-		"bellsprout",
-		"weepinbell",
-		"victreebel",
-		"tentacool",
-		"tentacruel",
-		"geodude",
-		"graveler",
-		"golem",
-		"ponyta",
-		"rapidash",
-		"slowpoke",
-		"slowbro",
-		"magnemite",
-		"magneton",
-		"farfetch'd",
-		"doduo",
-		"dodrio",
-		"seel",
-		"dewgong",
-		"grimer",
-		"muk",
-		"shellder",
-		"cloyster",
-		"gastly",
-		"haunter",
-		"gengar",
-		"onix",
-		"drowzee",
-		"hypno",
-		"krabby",
-		"kingler",
-		"voltorb",
-		"electrode",
-	];
-	const pokemonIndex = Math.floor(Math.random() * pokemonArray.length);
-	return pokemonArray[pokemonIndex];
+const apiUrlNames = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=500";
+async function generatePokemonName() {
+	try {
+		const response = await fetch(apiUrlNames);
+
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+
+		const data = await response.json();
+		console.log(data);
+
+		const pokemonArray = data.results;
+
+		const pokemonIndex = Math.floor(Math.random() * pokemonArray.length);
+		let pokemonIndex2 = Math.floor(Math.random() * pokemonArray.length);
+
+		const pokemonNameLeft = pokemonArray[pokemonIndex].name;
+		let pokemonNameRight = pokemonArray[pokemonIndex2].name;
+
+		while (pokemonNameLeft === pokemonNameRight) {
+			pokemonIndex2 = Math.floor(Math.random() * pokemonArray.length);
+			pokemonNameRight = pokemonArray[pokemonIndex2].name;
+		}
+		return [pokemonNameLeft, pokemonNameRight];
+	} catch (error) {
+		console.error("Error fetching data:", error);
+	}
 }
 
-function generatePokemon() {
-	const name1 = generatePokemonName();
-	const name2 = generatePokemonName();
-
-	while (name1 === name2) {
-		name2 = generatePokemonName();
+async function setPokemon() {
+	try {
+		const pokemonName = await generatePokemonName();
+		fetchPokemonImage("pokemon-image-left", pokemonName[0]);
+		fetchPokemonImage("pokemon-image-right", pokemonName[1]);
+	} catch (error) {
+		console.error("Error fetching data:", error);
 	}
-	fetchPokemonImage("pokemon-image-left", name1);
-	fetchPokemonImage("pokemon-image-right", name2);
 }
 
 const pokemonButton = document
 	.getElementById("btn")
-	.addEventListener("click", generatePokemon);
+	.addEventListener("click", setPokemon);
 
 const pokemonContainer = document.getElementById("pokemon-container");
 

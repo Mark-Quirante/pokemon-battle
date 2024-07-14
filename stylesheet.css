@@ -23,11 +23,19 @@
 	border: 2px solid black;
 	border-radius: 20px;
 	padding: 10px;
-	background-color: aqua;
+	background-color: chartreuse;
 	font-size: larger;
 	min-width: 200px;
 }
 
-.stat-container {
+#vs {
 	display: none;
+}
+
+h1 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
 }

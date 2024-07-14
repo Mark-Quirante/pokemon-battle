@@ -2,7 +2,7 @@
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
 // Function to fetch data from the API
-async function fetchPokemonImage(id, pokemonName) {
+async function fetchPokemon(pokemonName, side) {
 	try {
 		const response = await fetch(apiUrl + pokemonName); // Make the API request
 
@@ -15,11 +15,71 @@ async function fetchPokemonImage(id, pokemonName) {
 		console.log(data); // Do something with the data
 
 		const imgURL = data.sprites.front_default;
+		const pokemonStatHpName = data.stats[0].stat.name;
+		const pokemonStatHpNum = data.stats[0].base_stat;
+		const pokemonStatAtkName = data.stats[1].stat.name;
+		const pokemonStatAtkNum = data.stats[1].base_stat;
+		const pokemonStatDefName = data.stats[2].stat.name;
+		const pokemonStatDefNum = data.stats[2].base_stat;
+		const pokemonStatSpatkName = data.stats[3].stat.name;
+		const pokemonStatSpatkNum = data.stats[3].base_stat;
+		const pokemonStatSpdefName = data.stats[4].stat.name;
+		const pokemonStatSpdefNum = data.stats[4].base_stat;
+		const pokemonStatSpeedName = data.stats[5].stat.name;
+		const pokemonStatSpeedNum = data.stats[5].base_stat;
 
 		// Example: Update the DOM with the fetched data
-		const dataContainer = document.getElementById(id);
-		dataContainer.src = imgURL;
-		dataContainer.alt = data.name;
+		const imageContainer = document.getElementById("pokemon-image-" + side);
+		imageContainer.src = imgURL;
+		imageContainer.alt = data.name;
+
+		const statContainerHpName = document.getElementById("pokemon-hp-" + side);
+		statContainerHpName.innerText = pokemonStatHpName;
+		const statContainerHpNum = document.getElementById(
+			"pokemon-hp-num-" + side
+		);
+		statContainerHpNum.innerText = pokemonStatHpNum;
+
+		const statContainerAtkName = document.getElementById("pokemon-atk-" + side);
+		statContainerAtkName.innerText = pokemonStatAtkName;
+		const statContainerAtkNum = document.getElementById(
+			"pokemon-atk-num-" + side
+		);
+		statContainerAtkNum.innerText = pokemonStatAtkNum;
+
+		const statContainerDefName = document.getElementById("pokemon-def-" + side);
+		statContainerDefName.innerText = pokemonStatDefName;
+		const statContainerDefNum = document.getElementById(
+			"pokemon-def-num-" + side
+		);
+		statContainerDefNum.innerText = pokemonStatDefNum;
+
+		const statContainerSpatkName = document.getElementById(
+			"pokemon-spatk-" + side
+		);
+		statContainerSpatkName.innerText = pokemonStatSpatkName;
+		const statContainerSpatkNum = document.getElementById(
+			"pokemon-spatk-num-" + side
+		);
+		statContainerSpatkNum.innerText = pokemonStatSpatkNum;
+
+		const statContainerSpdefName = document.getElementById(
+			"pokemon-spdef-" + side
+		);
+		statContainerSpdefName.innerText = pokemonStatSpdefName;
+		const statContainerSpdefNum = document.getElementById(
+			"pokemon-spdef-num-" + side
+		);
+		statContainerSpdefNum.innerText = pokemonStatSpdefNum;
+
+		const statContainerSpeedName = document.getElementById(
+			"pokemon-speed-" + side
+		);
+		statContainerSpeedName.innerText = pokemonStatSpeedName;
+		const statContainerSpeedNum = document.getElementById(
+			"pokemon-speed-num-" + side
+		);
+		statContainerSpeedNum.innerText = pokemonStatSpeedNum;
 	} catch (error) {
 		console.error("Error fetching data:", error); // Handle errors
 	}
@@ -58,8 +118,8 @@ async function generatePokemonName() {
 async function setPokemon() {
 	try {
 		const pokemonName = await generatePokemonName();
-		fetchPokemonImage("pokemon-image-left", pokemonName[0]);
-		fetchPokemonImage("pokemon-image-right", pokemonName[1]);
+		fetchPokemon(pokemonName[0], "left");
+		fetchPokemon(pokemonName[1], "right");
 	} catch (error) {
 		console.error("Error fetching data:", error);
 	}

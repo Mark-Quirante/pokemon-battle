@@ -2,7 +2,7 @@
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
 // Function to fetch data from the API
-async function fetchData(id, pokemonName) {
+async function fetchPokemonImage(id, pokemonName) {
 	try {
 		const response = await fetch(apiUrl + pokemonName); // Make the API request
 
@@ -15,9 +15,9 @@ async function fetchData(id, pokemonName) {
 		console.log(data); // Do something with the data
 
 		const imgURL = data.sprites.front_default;
+
 		// Example: Update the DOM with the fetched data
 		const dataContainer = document.getElementById(id);
-
 		dataContainer.src = imgURL;
 		dataContainer.alt = data.name;
 	} catch (error) {
@@ -137,11 +137,11 @@ function generatePokemon() {
 	const name1 = generatePokemonName();
 	const name2 = generatePokemonName();
 
-	if (name1 === name2) {
+	while (name1 === name2) {
 		name2 = generatePokemonName();
 	}
-	fetchData("pokemon1", name1);
-	fetchData("pokemon2", name2);
+	fetchPokemonImage("pokemon1", name1);
+	fetchPokemonImage("pokemon2", name2);
 }
 
 const pokemonButton = document

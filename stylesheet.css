@@ -28,14 +28,15 @@
 	min-width: 200px;
 }
 
-#vs {
-	display: none;
-}
-
 h1 {
 	text-align: center;
 }
 
 p {
+	text-align: center;
+}
+
+#pokemon-name-left,
+#pokemon-name-right {
 	text-align: center;
 }

@@ -15,17 +15,12 @@ async function fetchPokemon(pokemonName, side) {
 		console.log(data); // Do something with the data
 
 		const imgURL = data.sprites.front_default;
-		const pokemonStatHpName = data.stats[0].stat.name;
+		const pokemonNameLabel = data.name;
 		const pokemonStatHpNum = data.stats[0].base_stat;
-		const pokemonStatAtkName = data.stats[1].stat.name;
 		const pokemonStatAtkNum = data.stats[1].base_stat;
-		const pokemonStatDefName = data.stats[2].stat.name;
 		const pokemonStatDefNum = data.stats[2].base_stat;
-		const pokemonStatSpatkName = data.stats[3].stat.name;
 		const pokemonStatSpatkNum = data.stats[3].base_stat;
-		const pokemonStatSpdefName = data.stats[4].stat.name;
 		const pokemonStatSpdefNum = data.stats[4].base_stat;
-		const pokemonStatSpeedName = data.stats[5].stat.name;
 		const pokemonStatSpeedNum = data.stats[5].base_stat;
 
 		// Example: Update the DOM with the fetched data
@@ -33,49 +28,34 @@ async function fetchPokemon(pokemonName, side) {
 		imageContainer.src = imgURL;
 		imageContainer.alt = data.name;
 
-		const statContainerHpName = document.getElementById("pokemon-hp-" + side);
-		statContainerHpName.innerText = pokemonStatHpName;
+		const nameContainer = document.getElementById("pokemon-name-" + side);
+		nameContainer.innerText = pokemonNameLabel;
+
 		const statContainerHpNum = document.getElementById(
 			"pokemon-hp-num-" + side
 		);
 		statContainerHpNum.innerText = pokemonStatHpNum;
 
-		const statContainerAtkName = document.getElementById("pokemon-atk-" + side);
-		statContainerAtkName.innerText = pokemonStatAtkName;
 		const statContainerAtkNum = document.getElementById(
 			"pokemon-atk-num-" + side
 		);
 		statContainerAtkNum.innerText = pokemonStatAtkNum;
 
-		const statContainerDefName = document.getElementById("pokemon-def-" + side);
-		statContainerDefName.innerText = pokemonStatDefName;
 		const statContainerDefNum = document.getElementById(
 			"pokemon-def-num-" + side
 		);
 		statContainerDefNum.innerText = pokemonStatDefNum;
 
-		const statContainerSpatkName = document.getElementById(
-			"pokemon-spatk-" + side
-		);
-		statContainerSpatkName.innerText = pokemonStatSpatkName;
 		const statContainerSpatkNum = document.getElementById(
 			"pokemon-spatk-num-" + side
 		);
 		statContainerSpatkNum.innerText = pokemonStatSpatkNum;
 
-		const statContainerSpdefName = document.getElementById(
-			"pokemon-spdef-" + side
-		);
-		statContainerSpdefName.innerText = pokemonStatSpdefName;
 		const statContainerSpdefNum = document.getElementById(
 			"pokemon-spdef-num-" + side
 		);
 		statContainerSpdefNum.innerText = pokemonStatSpdefNum;
 
-		const statContainerSpeedName = document.getElementById(
-			"pokemon-speed-" + side
-		);
-		statContainerSpeedName.innerText = pokemonStatSpeedName;
 		const statContainerSpeedNum = document.getElementById(
 			"pokemon-speed-num-" + side
 		);

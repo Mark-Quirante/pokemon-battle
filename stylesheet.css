@@ -1,16 +1,16 @@
-#pokemon1 {
+#pokemon-image-left {
 	height: 400px;
 	width: 400px;
 	transform: scaleX(-1);
 }
 
-#pokemon2 {
+#pokemon-image-right {
 	height: 400px;
 	width: 400px;
 	margin-left: 200px;
 }
 
-.pokemonContainer {
+#pokemon-container {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;

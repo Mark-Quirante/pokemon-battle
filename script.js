@@ -140,10 +140,15 @@ function generatePokemon() {
 	while (name1 === name2) {
 		name2 = generatePokemonName();
 	}
-	fetchPokemonImage("pokemon1", name1);
-	fetchPokemonImage("pokemon2", name2);
+	fetchPokemonImage("pokemon-image-left", name1);
+	fetchPokemonImage("pokemon-image-right", name2);
 }
 
 const pokemonButton = document
 	.getElementById("btn")
 	.addEventListener("click", generatePokemon);
+
+const pokemonContainer = document.getElementById("pokemon-container");
+
+// Hide the pokemon container
+// pokemonContainer.style.display = 'none';

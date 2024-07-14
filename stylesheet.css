@@ -1,10 +1,28 @@
-#pokemon {
-	height: 200px;
-	width: 200px;
+#pokemon1 {
+	height: 400px;
+	width: 400px;
+	transform: scaleX(-1);
+}
+
+#pokemon2 {
+	height: 400px;
+	width: 400px;
 }
 
 .pokemonContainer {
 	display: flex;
 	justify-content: center;
-	margin-top: 250px;
+	flex-wrap: wrap;
+	margin: 100px auto 20px;
+}
+
+#btn {
+	display: block;
+	margin: auto;
+	border: 2px solid black;
+	border-radius: 20px;
+	padding: 10px;
+	background-color: aqua;
+	font-size: larger;
+	min-width: 200px;
 }

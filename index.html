@@ -10,12 +10,19 @@
 	</head>
 	<body>
 		<svg id="screen-border" xmlns="http://www.w3.org/2000/svg">
-			<rect width="100%" height="100%" x="0" y="0" fill="rgba(158, 147, 182, 0.3)" mask="url(#hole)" />
-			
+			<rect
+				width="100%"
+				height="100%"
+				x="0"
+				y="0"
+				fill="rgba(158, 147, 182, 0.3)"
+				mask="url(#hole)"
+			/>
+
 			<mask id="hole">
-				<rect x="0" y="0" width="100%" height="100%" fill="white"/>
-				<rect x="1.5%" y="2.5%" width="97%" height="95%" rx="15" fill="black"/>
-				</mask>
+				<rect x="0" y="0" width="100%" height="100%" fill="white" />
+				<rect x="1.5%" y="2.5%" width="97%" height="95%" rx="15" fill="black" />
+			</mask>
 		</svg>
 		<div id="container">
 			<div id="wrapper">
@@ -104,8 +111,11 @@
 						</div>
 					</div>
 				</div>
-				<button class="white-box" id="btn" type="button">
-					<p>Generate Random Pok&#233;mon</p>
+				<button class="white-box" id="generate-btn" type="button">
+					<p>Generate Pok&#233;mon</p>
+				</button>
+				<button class="white-box" id="who-wins-btn" type="button">
+					Who Wins?
 				</button>
 			</div>
 		</div>

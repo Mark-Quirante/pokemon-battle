@@ -28,6 +28,7 @@ async function fetchPokemon(pokemonName, side) {
 		imageContainer.src = imgURL;
 		imageContainer.alt = data.name;
 
+		//Displays name of pokemon
 		const nameContainer = document.getElementById("pokemon-name-" + side);
 		nameContainer.innerText = pokemonNameLabel;
 
@@ -94,21 +95,50 @@ async function generatePokemonName() {
 	}
 }
 
+const pokemonContainer = document.getElementById("pokemon-container");
+pokemonContainer.style.display = "none";
+
 async function setPokemon() {
 	try {
 		const pokemonName = await generatePokemonName();
 		fetchPokemon(pokemonName[0], "left");
 		fetchPokemon(pokemonName[1], "right");
+		pokemonContainer.style.display = "flex";
+		generatePokemonButton.style.display = "none";
+		whoWinsButton.style.display = "block";
 	} catch (error) {
 		console.error("Error fetching data:", error);
 	}
 }
 
-const pokemonButton = document
-	.getElementById("btn")
-	.addEventListener("click", setPokemon);
+//Generate Random Pokemon button
+const generatePokemonButton = document.getElementById("generate-btn");
+generatePokemonButton.addEventListener("click", setPokemon);
 
-const pokemonContainer = document.getElementById("pokemon-container");
+//Who Wins Button
+const whoWinsButton = document.getElementById("who-wins-btn");
+whoWinsButton.addEventListener("click", win);
 
-// Hide the pokemon container
-// pokemonContainer.style.display = 'none';
+whoWinsButton.style.display = "none";
+
+function win() {
+	const pokemonAtkNumLeft = document.getElementById(
+		"pokemon-atk-num-left"
+	).innerHTML;
+	const pokemonAtkNumRight = document.getElementById(
+		"pokemon-atk-num-right"
+	).innerHTML;
+
+	if (pokemonAtkNumLeft > pokemonAtkNumRight) {
+		const pokemonLeftWinnerName =
+			document.getElementById("pokemon-name-left").innerHTML;
+		alert(pokemonLeftWinnerName + " wins!");
+	} else {
+		const pokemonRightWinnerName =
+			document.getElementById("pokemon-name-right").innerHTML;
+		alert(pokemonRightWinnerName + " wins!");
+	}
+	generatePokemonButton.style.display = "block";
+	generatePokemonButton.innerText = "Regenerate Pokémon";
+	whoWinsButton.style.display = "none";
+}

@@ -1,14 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
+/****************************
+   Override & General Layout
+*****************************/
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	justify-content: center;
+	flex-grow: 1;
+
+	font-size: 10px;
 }
 
 html {
+	width: 100%;
+	height: 100%;
 	background-image: linear-gradient(
 		to bottom,
 		#fdfbf1,
@@ -16,6 +26,8 @@ html {
 		#ffffff 32%,
 		#f2f2f2 100%
 	);
+	background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 body * {
@@ -24,6 +36,11 @@ body * {
 	font-weight: 400;
 	font-style: normal;
 	line-height: 1.75;
+}
+
+body {
+	padding: 5rem 0;
+	margin: 0;
 }
 
 h1,
@@ -49,8 +66,10 @@ ul {
 	position: fixed;
 	left: 0;
 	top: 0;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
+	pointer-events: none;
+	z-index: 1000;
 }
 
 #container,
@@ -60,23 +79,29 @@ ul {
 	justify-content: center;
 	align-items: center;
 
-	width: 100%;
+	width: 97%;
 }
 
 #container {
 	flex-grow: 1;
+	margin: 0 auto;
+	overflow-x: hidden;
 }
 
 .blue-box,
 .white-box {
 	filter: drop-shadow(0px 4px rgba(0, 0, 0, 0.25));
+	padding: 1rem 2rem;
 }
 
 .blue-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 	background-color: #366785;
 	border: 5px solid #f1d88d;
 	color: white;
-	padding: 1rem 5rem;
 	border-radius: 1rem;
 }
 
@@ -104,8 +129,8 @@ ul {
 *****************************/
 #pokemon-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	align-items: center;
 	width: 100%;
 
 	margin-top: 6rem;
@@ -123,33 +148,31 @@ ul {
 	justify-content: flex-end;
 }
 
-#pokemon-container-left > .pokemon-about {
-	order: -1;
-}
-
-.pokemon-about {
-	margin-left: 1rem;
-	margin-right: 1rem;
-}
-
 #vs {
 	font-size: 50px;
 	color: #342d43;
 	filter: drop-shadow(3px 3px rgba(0, 0, 0, 0.25));
+	margin: 2rem 0;
 }
 
 /****************************
    Pokemon Image Styles
 *****************************/
-.image-wrapper {
-	min-width: 300px;
-	max-width: 350px;
+#pokemon-container-left > .image-wrapper {
+	transform: translateX(-10%);
+}
 
+#pokemon-container-right > .image-wrapper {
+	transform: translateX(10%);
+}
+
+.image-wrapper {
 	display: flex;
 	justify-content: center;
 	flex-grow: 1;
+	flex-shrink: 1;
 
-	z-index: 100;
+	z-index: -10;
 	position: relative;
 }
 
@@ -158,16 +181,17 @@ ul {
 	position: absolute;
 	bottom: 0;
 	left: 50%;
-	transform: translateX(-50%) translateY(10%);
-	width: 50%;
+	transform: translate(-50%, 10%);
+	width: 80%;
 	height: 30px;
-	border: 5px solid #d7d7d7;
+	border: 5px solid #D7D7D7;
 	border-radius: 50%;
 	background-color: white;
 	z-index: -100;
 }
 
 .image-wrapper > img {
+	max-width: 100%;
 	transform: scale(2) translateY(-35%);
 }
 
@@ -178,6 +202,11 @@ ul {
 /****************************
    Pokemon Stat Styles
 *****************************/
+#pokemon-container-left > .pokemon-about {
+	order: -1;
+}
+
+
 .pokemon-name-box {
 	padding-bottom: 3rem;
 }
@@ -198,8 +227,8 @@ ul {
 
 .stat-row {
 	display: grid;
-	grid-template-columns: 1fr 100px;
-	padding: 0 3rem;
+	grid-template-columns: 1fr 50px;
+	padding: 0 2rem;
 }
 
 .stat-row:nth-child(odd) {
@@ -220,4 +249,19 @@ ul {
 #generate-btn,
 #who-wins-btn {
 	border-radius: 500px;
+}
+
+/****************************
+   Responsiveness
+*****************************/
+@media screen and (min-width: 760px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}
+
+@media screen and (min-width: 1600px) {
+
 }

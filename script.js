@@ -14,7 +14,7 @@ async function fetchPokemon(pokemonName, side) {
 		const data = await response.json(); // Parse the JSON response
 		console.log(data); // Do something with the data
 
-		const imgURL = data.sprites.front_default;
+		const imgURL = data.sprites.other.showdown.front_default;
 		const pokemonNameLabel = data.name;
 		const pokemonStatHpNum = data.stats[0].base_stat;
 		const pokemonStatAtkNum = data.stats[1].base_stat;

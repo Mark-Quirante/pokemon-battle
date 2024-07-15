@@ -9,84 +9,98 @@
 		<title>Pokemon-Battle</title>
 	</head>
 	<body>
-		<div>
-			<h1>Pok&#233;mon Battle!</h1>
-			<p>See which Pok&#233;mon would win in a battle!</p>
-			<div id="pokemon-container">
-				<div id="pokemon-container-left">
-					<div>
-						<img id="pokemon-image-left" />
-						<p id="pokemon-name-left"></p>
+		<div id="container">
+			<div id="wrapper">
+				<div id="heading" class="blue-box">
+					<h1>Pok&#233;mon Battle!</h1>
+					<p>See which Pok&#233;mon would win in a battle!</p>
+				</div>
+				<div id="pokemon-container">
+					<div id="pokemon-container-left">
+						<div class="image-wrapper">
+							<img id="pokemon-image-left" />
+						</div>
+						<div class="pokemon-about">
+							<div class="blue-box pokemon-name-box">
+								<p id="pokemon-name-left"></p>
+							</div>
+							<div class="white-box stat-container">
+								<h2>Stats</h2>
+								<ul>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-hp-left">HP</p>
+										<p class="stat-number" id="pokemon-hp-num-left">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-atk-left">Attack</p>
+										<p class="stat-number" id="pokemon-atk-num-left">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-def-left">Defense</p>
+										<p class="stat-number" id="pokemon-def-num-left">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-spatk-left">Sp. Atk</p>
+										<p class="stat-number" id="pokemon-spatk-num-left">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-spdef-left">Sp. Def</p>
+										<p class="stat-number" id="pokemon-spdef-num-left">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-speed-left">Speed</p>
+										<p class="stat-number" id="pokemon-speed-num-left">67</p>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<div class="stat-container">
-						<h2>Stats</h2>
-						<ul>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-hp-left">HP</p>
-								<p class="stat-number" id="pokemon-hp-num-left">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-atk-left">Attack</p>
-								<p class="stat-number" id="pokemon-atk-num-left">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-def-left">Defense</p>
-								<p class="stat-number" id="pokemon-def-num-left">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-spatk-left">Sp. Atk</p>
-								<p class="stat-number" id="pokemon-spatk-num-left">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-spdef-left">Sp. Def</p>
-								<p class="stat-number" id="pokemon-spdef-num-left">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-speed-left">Speed</p>
-								<p class="stat-number" id="pokemon-speed-num-left">67</p>
-							</li>
-						</ul>
+					<p id="vs">vs.</p>
+					<div id="pokemon-container-right">
+						<div class="image-wrapper">
+							<img id="pokemon-image-right" />
+						</div>
+						<div class="pokemon-about">
+							<div class="blue-box pokemon-name-box">
+								<p id="pokemon-name-right"></p>
+							</div>
+							<div class="white-box stat-container">
+								<h2>Stats</h2>
+								<ul>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-hp-right">HP</p>
+										<p class="stat-number" id="pokemon-hp-num-right">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-atk-right">Attack</p>
+										<p class="stat-number" id="pokemon-atk-num-right">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-def-right">Defense</p>
+										<p class="stat-number" id="pokemon-def-num-right">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-spatk-right">Sp. Atk</p>
+										<p class="stat-number" id="pokemon-spatk-num-right">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-spdef-right">Sp. Def</p>
+										<p class="stat-number" id="pokemon-spdef-num-right">67</p>
+									</li>
+									<li class="stat-row">
+										<p class="stat-title" id="pokemon-speed-right">Speed</p>
+										<p class="stat-number" id="pokemon-speed-num-right">67</p>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
-				<p id="vs">vs.</p>
-				<div class="pokemon-container-right">
-					<div>
-						<img id="pokemon-image-right" />
-						<p id="pokemon-name-right"></p>
-					</div>
-					<div class="stat-container">
-						<h2>Stats</h2>
-						<ul>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-hp-right">HP</p>
-								<p class="stat-number" id="pokemon-hp-num-right">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-atk-right">Attack</p>
-								<p class="stat-number" id="pokemon-atk-num-right">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-def-right">Defense</p>
-								<p class="stat-number" id="pokemon-def-num-right">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-spatk-right">Sp. Atk</p>
-								<p class="stat-number" id="pokemon-spatk-num-right">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-spdef-right">Sp. Def</p>
-								<p class="stat-number" id="pokemon-spdef-num-right">67</p>
-							</li>
-							<li class="stat-row">
-								<p class="stat-title" id="pokemon-speed-right">Speed</p>
-								<p class="stat-number" id="pokemon-speed-num-right">67</p>
-							</li>
-						</ul>
-					</div>
-				</div>
+				<button class="white-box" id="btn" type="button">
+					<p>Generate Random Pok&#233;mon</p>
+				</button>
 			</div>
 		</div>
-		<button id="btn" type="button">Generate Random Pok&#233;mon</button>
 		<script src="./script.js"></script>
 	</body>
 </html>

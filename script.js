@@ -12,10 +12,10 @@ async function fetchPokemon(pokemonName, side) {
 		}
 
 		const data = await response.json(); // Parse the JSON response
-		console.log(data); // Do something with the data
 
 		const imgURL = data.sprites.other.showdown.front_default;
-		const pokemonNameLabel = data.name;
+		const pokemonNameLabel =
+			data.name.charAt(0).toUpperCase() + data.name.slice(1);
 		const pokemonStatHpNum = data.stats[0].base_stat;
 		const pokemonStatAtkNum = data.stats[1].base_stat;
 		const pokemonStatDefNum = data.stats[2].base_stat;
@@ -75,7 +75,6 @@ async function generatePokemonName() {
 		}
 
 		const data = await response.json();
-		console.log(data);
 
 		const pokemonArray = data.results;
 

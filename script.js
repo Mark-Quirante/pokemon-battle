@@ -122,6 +122,7 @@ whoWinsButton.addEventListener("click", win);
 whoWinsButton.style.display = "none";
 
 function win() {
+	//Variables that contain attack values
 	const pokemonAtkNumLeft = document.getElementById(
 		"pokemon-atk-num-left"
 	).innerHTML;
@@ -129,17 +130,37 @@ function win() {
 		"pokemon-atk-num-right"
 	).innerHTML;
 
+	//Variables that contain defense values
+	const pokemonDefNumLeft = document.getElementById(
+		"pokemon-def-num-left"
+	).innerHTML;
+	const pokemonDefNumRight = document.getElementById(
+		"pokemon-def-num-right"
+	).innerHTML;
+
+	const pokemoneCompareDefenseValue = 1.5;
+
+	const pokemonLeftWinnerName =
+		document.getElementById("pokemon-name-left").innerHTML;
+	const pokemonRightWinnerName =
+		document.getElementById("pokemon-name-right").innerHTML;
+
 	if (pokemonAtkNumLeft > pokemonAtkNumRight) {
-		const pokemonLeftWinnerName =
-			document.getElementById("pokemon-name-left").innerHTML;
-		alert(pokemonLeftWinnerName + " wins!");
-	} else if (pokemonAtkNumLeft == pokemonAtkNumRight) {
-		alert("It's a tie!");
+		if (pokemonAtkNumLeft / pokemoneCompareDefenseValue < pokemonDefNumRight) {
+			alert(pokemonRightWinnerName + " wins!");
+		} else {
+			alert(pokemonLeftWinnerName + " wins!");
+		}
+	} else if (pokemonAtkNumLeft < pokemonAtkNumRight) {
+		if (pokemonAtkNumRight / pokemoneCompareDefenseValue < pokemonDefNumLeft) {
+			alert(pokemonLeftWinnerName + " wins!");
+		} else {
+			alert(pokemonRightWinnerName + " wins!");
+		}
 	} else {
-		const pokemonRightWinnerName =
-			document.getElementById("pokemon-name-right").innerHTML;
-		alert(pokemonRightWinnerName + " wins!");
+		alert("It's a tie!");
 	}
+	//Switching out which buttons will appear
 	generatePokemonButton.style.display = "block";
 	generatePokemonButton.innerText = "Regenerate Pokémon";
 	whoWinsButton.style.display = "none";

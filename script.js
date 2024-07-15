@@ -105,7 +105,10 @@ async function setPokemon() {
 		fetchPokemon(pokemonName[1], "right");
 		pokemonContainer.style.display = "flex";
 		generatePokemonButton.style.display = "none";
+		winnerBoxDisplay.style.display = "none";
 		whoWinsButton.style.display = "block";
+		showLoserPokemonContainer(pokemonContainerVisibilityLeft);
+		showLoserPokemonContainer(pokemonContainerVisibilityRight);
 	} catch (error) {
 		console.error("Error fetching data:", error);
 	}
@@ -120,6 +123,42 @@ const whoWinsButton = document.getElementById("who-wins-btn");
 whoWinsButton.addEventListener("click", win);
 
 whoWinsButton.style.display = "none";
+
+//Winner box displaying pokemon winner
+const winnerBoxDisplay = document.getElementById("winner-box");
+winnerBoxDisplay.style.display = "none";
+
+function winnerBoxDisplayName(winner) {
+	const winnerBoxDisplayName = document.getElementById("winner-box");
+	winnerBoxDisplayName.innerText = winner + " wins!";
+	return winnerBoxDisplayName;
+}
+
+const pokemonContainerVisibilityLeft = document.getElementById(
+	"pokemon-container-left"
+);
+const pokemonContainerVisibilityRight = document.getElementById(
+	"pokemon-container-right"
+);
+
+//Hiding Loser pokemon container
+function hideLoserPokemonContainer(loser) {
+	loser.style.visibility = "hidden";
+}
+
+//Displaying loser pokemon container from last battle
+function showLoserPokemonContainer(loser) {
+	loser.style.visibility = "visible";
+}
+
+/* DOES NOT WORK! */
+//Ensuring that Pokemon platform is always visible
+// const pokemonPlatform = document.getElementById("image-wrapper");
+// pokemonPlatform.style.visibility = "visible";
+
+// function showLoserPokemonPlatform(loserPlatform) {
+// 	loserPlatform.style.visibility = "visible";
+// }
 
 function win() {
 	//Variables that contain attack values
@@ -147,21 +186,26 @@ function win() {
 
 	if (pokemonAtkNumLeft > pokemonAtkNumRight) {
 		if (pokemonAtkNumLeft / pokemoneCompareDefenseValue < pokemonDefNumRight) {
-			alert(pokemonRightWinnerName + " wins!");
+			winnerBoxDisplayName(pokemonRightWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
 		} else {
-			alert(pokemonLeftWinnerName + " wins!");
+			winnerBoxDisplayName(pokemonLeftWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityRight);
 		}
 	} else if (pokemonAtkNumLeft < pokemonAtkNumRight) {
 		if (pokemonAtkNumRight / pokemoneCompareDefenseValue < pokemonDefNumLeft) {
-			alert(pokemonLeftWinnerName + " wins!");
+			winnerBoxDisplayName(pokemonLeftWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityRight);
 		} else {
-			alert(pokemonRightWinnerName + " wins!");
+			winnerBoxDisplayName(pokemonRightWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
 		}
 	} else {
 		alert("It's a tie!");
 	}
 	//Switching out which buttons will appear
 	generatePokemonButton.style.display = "block";
+	winnerBoxDisplay.style.display = "block";
 	generatePokemonButton.innerText = "Regenerate Pokémon";
 	whoWinsButton.style.display = "none";
 }

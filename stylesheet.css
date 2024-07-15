@@ -9,11 +9,13 @@ body {
 }
 
 html {
-	background-color: black;
-}
-
-body {
-	margin: 0.75rem;
+	background-image: linear-gradient(
+		to bottom,
+		#fdfbf1,
+		#ffffff 12%,
+		#ffffff 32%,
+		#f2f2f2 100%
+	);
 }
 
 body * {
@@ -42,6 +44,14 @@ ul {
 	list-style-type: none;
 }
 
+#screen-border {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
 #container,
 #wrapper {
 	display: flex;
@@ -53,14 +63,6 @@ ul {
 }
 
 #container {
-	background-image: linear-gradient(
-		to bottom,
-		#fdfbf1,
-		#ffffff 12%,
-		#ffffff 32%,
-		#f2f2f2 100%
-	);
-	border-radius: 1.5rem;
 	flex-grow: 1;
 }
 

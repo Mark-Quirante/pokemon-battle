@@ -133,12 +133,12 @@ function win() {
 		const pokemonLeftWinnerName =
 			document.getElementById("pokemon-name-left").innerHTML;
 		alert(pokemonLeftWinnerName + " wins!");
-	} else if (pokemonAtkNumLeft === pokemonAtkNumRight) {
+	} else if (pokemonAtkNumLeft == pokemonAtkNumRight) {
+		alert("It's a tie!");
+	} else {
 		const pokemonRightWinnerName =
 			document.getElementById("pokemon-name-right").innerHTML;
 		alert(pokemonRightWinnerName + " wins!");
-	} else {
-		alert("It's a tie!");
 	}
 	generatePokemonButton.style.display = "block";
 	generatePokemonButton.innerText = "Regenerate Pokémon";

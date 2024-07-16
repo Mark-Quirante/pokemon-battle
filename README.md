@@ -13,6 +13,10 @@ We would also like to achieve a responsive design where the it would be suitable
 
 ![Screenshot 2024-07-15 001402](https://github.com/user-attachments/assets/8c33fa47-8336-45b8-89e7-9bd85a180bbe)
 
+## Future Features
+- Animations and transitions
+- More complex winning conditions
+- "About Me" page for each Pokémon
 
 ## Feedback
 If you are interested in the growth of this project, please do not hesitate to create an issue request that you would like to see in the project!

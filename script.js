@@ -151,15 +151,6 @@ function showLoserPokemonContainer(loser) {
 	loser.style.visibility = "visible";
 }
 
-/* DOES NOT WORK! */
-//Ensuring that Pokemon platform is always visible
-// const pokemonPlatform = document.getElementById("image-wrapper");
-// pokemonPlatform.style.visibility = "visible";
-
-// function showLoserPokemonPlatform(loserPlatform) {
-// 	loserPlatform.style.visibility = "visible";
-// }
-
 function win() {
 	//Variables that contain attack values
 	const pokemonAtkNumLeft = document.getElementById(
@@ -183,6 +174,7 @@ function win() {
 		document.getElementById("pokemon-name-left").innerHTML;
 	const pokemonRightWinnerName =
 		document.getElementById("pokemon-name-right").innerHTML;
+	const pokemonTieWinnerName = "Everyone";
 
 	if (pokemonAtkNumLeft > pokemonAtkNumRight) {
 		if (pokemonAtkNumLeft / pokemoneCompareDefenseValue < pokemonDefNumRight) {
@@ -201,7 +193,7 @@ function win() {
 			hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
 		}
 	} else {
-		alert("It's a tie!");
+		winnerBoxDisplayName(pokemonTieWinnerName);
 	}
 	//Switching out which buttons will appear
 	generatePokemonButton.style.display = "block";

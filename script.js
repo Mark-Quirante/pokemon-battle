@@ -190,23 +190,34 @@ function win() {
 	// hideLoserPokemonContainer(pokemonContainerVisibilityRight);
 
 	if (
-		pokemonAtkNumLeft > pokemonAtkNumRight ||
-		(pokemonAtkNumLeft / pokemoneCompareDefenseValue > pokemonDefNumRight &&
-			pokemonAtkNumLeft > pokemonHpNumRight)
+		pokemonAtkNumLeft > pokemonAtkNumRight &&
+		pokemonDefNumLeft > pokemonDefNumRight &&
+		pokemonHpNumLeft > pokemonHpNumRight
 	) {
 		winnerBoxDisplayName(pokemonLeftWinnerName);
 		hideLoserPokemonContainer(pokemonContainerVisibilityRight);
 	} else if (
-		pokemonAtkNumRight > pokemonAtkNumLeft ||
-		(pokemonAtkNumRight / pokemoneCompareDefenseValue > pokemonDefNumLeft &&
-			pokemonAtkNumRight > pokemonHpNumLeft)
+		pokemonAtkNumLeft < pokemonAtkNumRight &&
+		pokemonDefNumLeft < pokemonDefNumRight &&
+		pokemonHpNumLeft < pokemonHpNumRight
+	) {
+		winnerBoxDisplayName(pokemonRightWinnerName);
+		hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
+	} else if (
+		pokemonAtkNumLeft > pokemonDefNumRight ||
+		pokemonHpNumLeft > pokemonDefNumRight
+	) {
+		winnerBoxDisplayName(pokemonLeftWinnerName);
+		hideLoserPokemonContainer(pokemonContainerVisibilityRight);
+	} else if (
+		pokemonAtkNumLeft < pokemonDefNumRight ||
+		pokemonHpNumLeft < pokemonDefNumRight
 	) {
 		winnerBoxDisplayName(pokemonRightWinnerName);
 		hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
 	} else {
 		winnerBoxDisplayName(pokemonTieOutcome);
 	}
-
 	//Switching out which buttons will appear
 	generatePokemonButton.style.display = "block";
 	winnerBoxDisplay.style.display = "block";

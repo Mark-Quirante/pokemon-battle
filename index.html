@@ -9,21 +9,6 @@
     <title>Pokemon-Battle</title>
   </head>
   <body>
-    <svg id="screen-border" xmlns="http://www.w3.org/2000/svg">
-      <rect
-        width="100%"
-        height="100%"
-        x="0"
-        y="0"
-        fill="#E2DFEA"
-        mask="url(#hole)"
-      />
-
-      <mask id="hole">
-        <rect x="0" y="0" width="100%" height="100%" fill="white" />
-        <rect x="1.5%" y="2.5%" width="97%" height="95%" rx="15" fill="black" />
-      </mask>
-    </svg>
     <div id="container">
       <div id="wrapper">
         <div id="heading" class="blue-box">
@@ -33,7 +18,12 @@
         <div id="pokemon-container">
           <div id="pokemon-container-left">
             <div class="image-wrapper">
-              <img class="poke-img-hide" id="pokemon-image-left" />
+              <img class="poke-img poke-img-hide" id="pokemon-image-left" />
+              <img
+                id="poke-load-left"
+                class="poke-load poke-ball-twitch-left poke-img-hide"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+              />
             </div>
             <div id="pokemon-about-left" class="pokemon-about slide-in-hide">
               <div class="blue-box pokemon-name-box">
@@ -73,7 +63,12 @@
           <p id="vs">vs.</p>
           <div id="pokemon-container-right">
             <div class="image-wrapper">
-              <img class="poke-img-hide" id="pokemon-image-right" />
+              <img class="poke-img poke-img-hide" id="pokemon-image-right" />
+              <img
+                id="poke-load-right"
+                class="poke-load poke-ball-twitch-right poke-img-hide"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+              />
             </div>
             <div id="pokemon-about-right" class="pokemon-about slide-in-hide">
               <div class="blue-box pokemon-name-box">
@@ -112,10 +107,18 @@
           </div>
         </div>
         <p class="blue-box shrink-out-after" id="winner-box">Someone wins!</p>
-        <button class="white-box" id="generate-btn" type="button">
+        <button
+          class="white-box shrink-out-before"
+          id="generate-btn"
+          type="button"
+        >
           <p>Generate Pok&#233;mon</p>
         </button>
-        <button class="white-box" id="who-wins-btn" type="button">
+        <button
+          class="white-box shrink-out-after"
+          id="who-wins-btn"
+          type="button"
+        >
           Who Wins?
         </button>
       </div>

@@ -19,16 +19,8 @@ body {
 html {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    to bottom,
-    #fdfbf1,
-    #ffffff 12%,
-    #ffffff 32%,
-    #f2f2f2 100%
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   font-size: 10px;
+  background-color: white;
 }
 
 body * {
@@ -40,8 +32,9 @@ body * {
 }
 
 body {
-  padding: 5rem 0;
+  padding: 1rem;
   margin: 0;
+  background-color: rgba(158, 147, 182, 0.3);
 }
 
 h1,
@@ -68,31 +61,32 @@ ul {
   list-style-type: none;
 }
 
-#screen-border {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 1000;
-}
-
 #container,
 #wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 97%;
 }
 
 #container {
   flex-grow: 1;
-  margin: 0 auto;
-  overflow-x: hidden;
   padding-bottom: 1rem;
+
+  border-radius: 1.5rem;
+  background-image: linear-gradient(
+    to bottom,
+    #fdfbf1,
+    #ffffff 12%,
+    #ffffff 32%,
+    #f2f2f2 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#wrapper {
+  width: 97%;
 }
 
 .blue-box,
@@ -168,7 +162,7 @@ button.white-box:active {
 }
 
 #vs {
-  font-size: 50px;
+  font-size: 25px;
   color: #342d43;
   filter: drop-shadow(3px 3px rgba(0, 0, 0, 0.25));
   text-shadow: 2px 2px white;
@@ -194,7 +188,6 @@ button.white-box:active {
   max-width: 400px;
   min-width: 100px;
 
-  z-index: -10;
   position: relative;
 }
 
@@ -213,28 +206,44 @@ button.white-box:active {
   visibility: visible !important;
 }
 
-.image-wrapper > img {
+.image-wrapper > .poke-img {
   max-width: 100%;
   transform: scale(2) translateY(-35%);
+}
+
+.poke-load {
+  position: absolute;
+  bottom: -15px;
+  transform: scale(1);
+  width: 50px;
+  height: auto;
 }
 
 #pokemon-image-left {
   transform: scale(-2, 2) translateY(-35%);
 }
 
-#pokemon-container-right:hover > .image-wrapper > img,
-#pokemon-container-right:focus > .image-wrapper > img {
+#pokemon-container-left > .image-wrapper > .poke-load {
+  transform: scale(-1, 1);
+}
+
+#pokemon-container-right:hover > .image-wrapper > .poke-img,
+#pokemon-container-right:focus > .image-wrapper > .poke-img {
   transform: scale(2.2) translateY(-35%);
 }
 
-#pokemon-container-left:hover > .image-wrapper > img,
-#pokemon-container-left:focus > .image-wrapper > img {
+#pokemon-container-left:hover > .image-wrapper > .poke-img,
+#pokemon-container-left:focus > .image-wrapper > .poke-img {
   transform: scale(-2.2, 2.2) translateY(-35%);
 }
 
 /****************************
    Pokemon Stat Styles
 *****************************/
+.pokemon-about {
+  z-index: 10;
+}
+
 #pokemon-container-left > .pokemon-about {
   order: -1;
 }
@@ -305,7 +314,7 @@ button.white-box:active {
   }
 
   body {
-    padding: 3rem 0;
+    padding: 1.5rem 1.5rem;
   }
 
   #pokemon-container {
@@ -388,7 +397,7 @@ button.white-box:active {
     max-width: 400px;
   }
 
-  .image-wrapper > img {
+  .image-wrapper > .poke-img {
     max-width: 100%;
     transform: scale(2.5) translateY(-35%);
   }
@@ -397,13 +406,13 @@ button.white-box:active {
     transform: scale(-2.5, 2.5) translateY(-35%);
   }
 
-  #pokemon-container-right:hover > .image-wrapper > img,
-  #pokemon-container-right:focus > .image-wrapper > img {
+  #pokemon-container-right:hover > .image-wrapper > .poke-img,
+  #pokemon-container-right:focus > .image-wrapper > .poke-img {
     transform: scale(2.7) translateY(-35%);
   }
 
-  #pokemon-container-left:hover > .image-wrapper > img,
-  #pokemon-container-left:focus > .image-wrapper > img {
+  #pokemon-container-left:hover > .image-wrapper > .poke-img,
+  #pokemon-container-left:focus > .image-wrapper > .poke-img {
     transform: scale(-2.7, 2.7) translateY(-35%);
   }
 
@@ -447,6 +456,42 @@ button.white-box:active {
   }
 }
 
+@keyframes pokeBallTwitchRight {
+  from {
+    transform: translateY(-35%) rotate(20deg);
+  }
+
+  25% {
+    transform: translateY(-35%) rotate(0deg);
+  }
+
+  75% {
+    transform: translateY(-35%) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(-35%) rotate(20deg);
+  }
+}
+
+@keyframes pokeBallTwitchLeft {
+  from {
+    transform: scale(-1, 1) translateY(-35%) rotate(20deg);
+  }
+
+  25% {
+    transform: scale(-1, 1) translateY(-35%) rotate(0deg);
+  }
+
+  75% {
+    transform: scale(-1, 1) translateY(-35%) rotate(0deg);
+  }
+
+  to {
+    transform: scale(-1, 1) translateY(-35%) rotate(20deg);
+  }
+}
+
 /****************************
       Animation Classes
 *****************************/
@@ -458,19 +503,29 @@ button.white-box:active {
   animation: slideFadeInFromBottom 0.75s ease-in-out 0s 1 forwards;
 }
 
+.poke-ball-twitch-right {
+  animation: pokeBallTwitchRight 1s ease-out 0s infinite;
+}
+
+.poke-ball-twitch-left {
+  animation: pokeBallTwitchLeft 1s ease-out 0s infinite;
+}
+
 .shrink-out-before {
   transition: max-height 1s ease-out, opacity 0.25s ease-in-out,
     border-width 0.25s ease-in-out, padding 0.25s ease-in-out,
-    margin 0.5s ease-in-out;
+    margin 0.5s ease-in-out, transform 0.3s ease-in-out;
 
   max-height: 1000px !important;
   opacity: 1 !important;
 }
 
 .shrink-out-after {
-  transition: max-height 0.2s ease-out, opacity 0.18s ease-in-out,
-    border 0.25s ease-in-out, padding 0.25s ease-in-out, margin 0.5s ease-in-out;
+  transition: max-height 0.2s ease-out, opacity 0.2s ease-in-out,
+    border 0.25s ease-in-out, padding 0.25s ease-in-out, margin 0.5s ease-in-out,
+    transform 0.3s ease-in-out;
 
+  pointer-events: none;
   max-height: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -479,14 +534,18 @@ button.white-box:active {
 }
 
 .poke-img-hide {
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out,
+    opacity 0.1s ease-in-out 0.1s;
 
   transform: scale(0) !important;
   filter: brightness(0) invert(1) !important;
+  opacity: 0 !important;
 }
 
 .poke-img-show {
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out,
+    opacity 0.1s ease-in-out 0s;
+  opacity: 1 !important;
 }
 
 .slide-in-hide {

@@ -1,125 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" type="text/css" href="./stylesheet.css" />
-		<meta name="Developer" content="Mark Quirante" />
-		<meta name="Developer" content="Angelica Mapeso" />
-		<title>Pokemon-Battle</title>
-	</head>
-	<body>
-		<svg id="screen-border" xmlns="http://www.w3.org/2000/svg">
-			<rect
-				width="100%"
-				height="100%"
-				x="0"
-				y="0"
-				fill="#E2DFEA"
-				mask="url(#hole)"
-			/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./stylesheet.css" />
+    <meta name="Developer" content="Mark Quirante" />
+    <meta name="Developer" content="Angelica Mapeso" />
+    <title>Pokemon-Battle</title>
+  </head>
+  <body>
+    <svg id="screen-border" xmlns="http://www.w3.org/2000/svg">
+      <rect
+        width="100%"
+        height="100%"
+        x="0"
+        y="0"
+        fill="#E2DFEA"
+        mask="url(#hole)"
+      />
 
-			<mask id="hole">
-				<rect x="0" y="0" width="100%" height="100%" fill="white" />
-				<rect x="1.5%" y="2.5%" width="97%" height="95%" rx="15" fill="black" />
-			</mask>
-		</svg>
-		<div id="container">
-			<div id="wrapper">
-				<div id="heading" class="blue-box">
-					<h1>Pok&#233;mon Battle!</h1>
-					<p>See which Pok&#233;mon would win in a battle!</p>
-				</div>
-				<div id="pokemon-container">
-					<div id="pokemon-container-left">
-						<div class="image-wrapper">
-							<img id="pokemon-image-left" />
-						</div>
-						<div class="pokemon-about">
-							<div class="blue-box pokemon-name-box">
-								<p id="pokemon-name-left"></p>
-							</div>
-							<div class="white-box stat-container">
-								<h2>Stats</h2>
-								<ul>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-hp-left">HP</p>
-										<p class="stat-number" id="pokemon-hp-num-left">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-atk-left">Attack</p>
-										<p class="stat-number" id="pokemon-atk-num-left">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-def-left">Defense</p>
-										<p class="stat-number" id="pokemon-def-num-left">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-spatk-left">Sp. Atk</p>
-										<p class="stat-number" id="pokemon-spatk-num-left">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-spdef-left">Sp. Def</p>
-										<p class="stat-number" id="pokemon-spdef-num-left">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-speed-left">Speed</p>
-										<p class="stat-number" id="pokemon-speed-num-left">0</p>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<p id="vs">vs.</p>
-					<div id="pokemon-container-right">
-						<div class="image-wrapper">
-							<img id="pokemon-image-right" />
-						</div>
-						<div class="pokemon-about">
-							<div class="blue-box pokemon-name-box">
-								<p id="pokemon-name-right"></p>
-							</div>
-							<div class="white-box stat-container">
-								<h2>Stats</h2>
-								<ul>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-hp-right">HP</p>
-										<p class="stat-number" id="pokemon-hp-num-right">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-atk-right">Attack</p>
-										<p class="stat-number" id="pokemon-atk-num-right">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-def-right">Defense</p>
-										<p class="stat-number" id="pokemon-def-num-right">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-spatk-right">Sp. Atk</p>
-										<p class="stat-number" id="pokemon-spatk-num-right">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-spdef-right">Sp. Def</p>
-										<p class="stat-number" id="pokemon-spdef-num-right">0</p>
-									</li>
-									<li class="stat-row">
-										<p class="stat-title" id="pokemon-speed-right">Speed</p>
-										<p class="stat-number" id="pokemon-speed-num-right">0</p>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<p class="blue-box" id="winner-box">Someone wins!</p>
-				<button class="white-box" id="generate-btn" type="button">
-					<p>Generate Pok&#233;mon</p>
-				</button>
-				<button class="white-box" id="who-wins-btn" type="button">
-					Who Wins?
-				</button>
-			</div>
-		</div>
-		<script src="./script.js"></script>
-	</body>
+      <mask id="hole">
+        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+        <rect x="1.5%" y="2.5%" width="97%" height="95%" rx="15" fill="black" />
+      </mask>
+    </svg>
+    <div id="container">
+      <div id="wrapper">
+        <div id="heading" class="blue-box">
+          <h1>Pok&#233;mon Battle!</h1>
+          <p>See which Pok&#233;mon would win in a battle!</p>
+        </div>
+        <div id="pokemon-container">
+          <div id="pokemon-container-left">
+            <div class="image-wrapper">
+              <img class="poke-img-hide" id="pokemon-image-left" />
+            </div>
+            <div id="pokemon-about-left" class="pokemon-about slide-in-hide">
+              <div class="blue-box pokemon-name-box">
+                <p id="pokemon-name-left"></p>
+              </div>
+              <div class="white-box stat-container">
+                <h2>Stats</h2>
+                <ul>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-hp-left">HP</p>
+                    <p class="stat-number" id="pokemon-hp-num-left">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-atk-left">Attack</p>
+                    <p class="stat-number" id="pokemon-atk-num-left">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-def-left">Defense</p>
+                    <p class="stat-number" id="pokemon-def-num-left">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-spatk-left">Sp. Atk</p>
+                    <p class="stat-number" id="pokemon-spatk-num-left">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-spdef-left">Sp. Def</p>
+                    <p class="stat-number" id="pokemon-spdef-num-left">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-speed-left">Speed</p>
+                    <p class="stat-number" id="pokemon-speed-num-left">0</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p id="vs">vs.</p>
+          <div id="pokemon-container-right">
+            <div class="image-wrapper">
+              <img class="poke-img-hide" id="pokemon-image-right" />
+            </div>
+            <div id="pokemon-about-right" class="pokemon-about slide-in-hide">
+              <div class="blue-box pokemon-name-box">
+                <p id="pokemon-name-right"></p>
+              </div>
+              <div class="white-box stat-container">
+                <h2>Stats</h2>
+                <ul>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-hp-right">HP</p>
+                    <p class="stat-number" id="pokemon-hp-num-right">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-atk-right">Attack</p>
+                    <p class="stat-number" id="pokemon-atk-num-right">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-def-right">Defense</p>
+                    <p class="stat-number" id="pokemon-def-num-right">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-spatk-right">Sp. Atk</p>
+                    <p class="stat-number" id="pokemon-spatk-num-right">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-spdef-right">Sp. Def</p>
+                    <p class="stat-number" id="pokemon-spdef-num-right">0</p>
+                  </li>
+                  <li class="stat-row">
+                    <p class="stat-title" id="pokemon-speed-right">Speed</p>
+                    <p class="stat-number" id="pokemon-speed-num-right">0</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="blue-box shrink-out-after" id="winner-box">Someone wins!</p>
+        <button class="white-box" id="generate-btn" type="button">
+          <p>Generate Pok&#233;mon</p>
+        </button>
+        <button class="white-box" id="who-wins-btn" type="button">
+          Who Wins?
+        </button>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>

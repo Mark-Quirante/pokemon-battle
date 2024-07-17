@@ -214,7 +214,6 @@ button.white-box:active {
 }
 
 .image-wrapper > img {
-  transition: transform ease-out 0.2s;
   max-width: 100%;
   transform: scale(2) translateY(-35%);
 }
@@ -413,6 +412,9 @@ button.white-box:active {
   }
 }
 
+/****************************
+          Keyframes
+*****************************/
 @keyframes bounce {
   from {
     transform: translateY(0);
@@ -421,4 +423,80 @@ button.white-box:active {
   to {
     transform: translateY(3%);
   }
+}
+
+@keyframes growIn {
+  from {
+    max-height: 0;
+  }
+
+  to {
+    max-height: 1000px;
+  }
+}
+
+@keyframes slideFadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+/****************************
+      Animation Classes
+*****************************/
+.grow-in {
+  animation: growIn 2s ease-out 0s 1 forwards;
+}
+
+.slide-fade-in-from-bottom {
+  animation: slideFadeInFromBottom 0.75s ease-in-out 0s 1 forwards;
+}
+
+.shrink-out-before {
+  transition: max-height 1s ease-out, opacity 0.25s ease-in-out,
+    border-width 0.25s ease-in-out, padding 0.25s ease-in-out,
+    margin 0.5s ease-in-out;
+
+  max-height: 1000px !important;
+  opacity: 1 !important;
+}
+
+.shrink-out-after {
+  transition: max-height 0.2s ease-out, opacity 0.18s ease-in-out,
+    border 0.25s ease-in-out, padding 0.25s ease-in-out, margin 0.5s ease-in-out;
+
+  max-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-width: 0 !important;
+  opacity: 0 !important;
+}
+
+.poke-img-hide {
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+
+  transform: scale(0) !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+.poke-img-show {
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.slide-in-hide {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  opacity: 0 !important;
+  transform: translateY(20%) !important;
+}
+
+.slide-in-show {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 1 !important;
 }

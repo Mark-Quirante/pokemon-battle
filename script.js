@@ -1,9 +1,16 @@
 // URL of the API endpoint
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
+const pokemonLoaded = {
+  left: false,
+  right: false,
+};
+
 // Function to fetch data from the API
 async function fetchPokemon(pokemonName, side) {
   try {
+    pokemonLoaded.left = false;
+    pokemonLoaded.right = false;
     const response = await fetch(apiUrl + pokemonName); // Make the API request
 
     if (!response.ok) {
@@ -63,6 +70,7 @@ async function fetchPokemon(pokemonName, side) {
     statContainerSpeedNum.innerText = pokemonStatSpeedNum;
   } catch (error) {
     console.error("Error fetching data:", error); // Handle errors
+    fetchPokemon(pokemonName, side);
   }
 }
 
@@ -101,6 +109,9 @@ pokemonContainer.style.display = "none";
 async function setPokemon() {
   try {
     const pokemonName = await generatePokemonName();
+    showLoserPokemonContainer(pokemonContainerVisibilityLeft);
+    showLoserPokemonContainer(pokemonContainerVisibilityRight);
+
     fetchPokemon(pokemonName[0], "left");
     fetchPokemon(pokemonName[1], "right");
 
@@ -115,11 +126,8 @@ async function setPokemon() {
     winnerBoxDisplay.classList.remove("shrink-out-before");
     winnerBoxDisplay.classList.add("shrink-out-after");
 
-    generatePokemonButton.style.display = "none";
-    whoWinsButton.style.display = "block";
-
-    showLoserPokemonContainer(pokemonContainerVisibilityLeft);
-    showLoserPokemonContainer(pokemonContainerVisibilityRight);
+    generatePokemonButton.classList.remove("shrink-out-before");
+    generatePokemonButton.classList.add("shrink-out-after");
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -132,8 +140,6 @@ generatePokemonButton.addEventListener("click", setPokemon);
 //Who Wins Button
 const whoWinsButton = document.getElementById("who-wins-btn");
 whoWinsButton.addEventListener("click", win);
-
-whoWinsButton.style.display = "none";
 
 //Winner box displaying pokemon winner
 const winnerBoxDisplay = document.getElementById("winner-box");
@@ -155,25 +161,37 @@ const pokemonContainerVisibilityRight = document.getElementById(
 const pokemonImageLeft = document.getElementById("pokemon-image-left");
 const pokemonAboutLeft = document.getElementById("pokemon-about-left");
 pokemonImageLeft.addEventListener("load", function () {
-  // setTimeout(() => {
-  pokemonImageLeft.classList.remove("poke-img-hide");
-  pokemonImageLeft.classList.add("poke-img-show");
+  setTimeout(() => {
+    pokemonImageLeft.classList.remove("poke-img-hide");
+    pokemonImageLeft.classList.add("poke-img-show");
 
-  pokemonAboutLeft.classList.remove("slide-in-hide");
-  pokemonAboutLeft.classList.add("slide-in-show");
-  // }, 200);
+    pokemonAboutLeft.classList.remove("slide-in-hide");
+    pokemonAboutLeft.classList.add("slide-in-show");
+
+    pokemonLoaded.left = true;
+    if (pokemonLoaded.left && pokemonLoaded.right) {
+      whoWinsButton.classList.remove("shrink-out-after");
+      whoWinsButton.classList.add("shrink-out-before");
+    }
+  }, 100);
 });
 
 const pokemonImageRight = document.getElementById("pokemon-image-right");
 const pokemonAboutRight = document.getElementById("pokemon-about-right");
 pokemonImageRight.addEventListener("load", function () {
-  // setTimeout(() => {
-  pokemonImageRight.classList.remove("poke-img-hide");
-  pokemonImageRight.classList.add("poke-img-show");
+  setTimeout(() => {
+    pokemonImageRight.classList.remove("poke-img-hide");
+    pokemonImageRight.classList.add("poke-img-show");
 
-  pokemonAboutRight.classList.remove("slide-in-hide");
-  pokemonAboutRight.classList.add("slide-in-show");
-  // }, 200);
+    pokemonAboutRight.classList.remove("slide-in-hide");
+    pokemonAboutRight.classList.add("slide-in-show");
+
+    pokemonLoaded.right = true;
+    if (pokemonLoaded.left && pokemonLoaded.right) {
+      whoWinsButton.classList.remove("shrink-out-after");
+      whoWinsButton.classList.add("shrink-out-before");
+    }
+  }, 100);
 });
 
 //Hiding Loser pokemon container
@@ -248,8 +266,10 @@ function win() {
   winnerBoxDisplay.classList.add("shrink-out-before");
 
   //Switching out which buttons will appear
-  generatePokemonButton.style.display = "block";
+  generatePokemonButton.classList.remove("shrink-out-after");
+  generatePokemonButton.classList.add("shrink-out-before");
   generatePokemonButton.innerText = "Regenerate Pokémon";
 
-  whoWinsButton.style.display = "none";
+  whoWinsButton.classList.remove("shrinnk-out-after");
+  whoWinsButton.classList.add("shrink-out-after");
 }

@@ -155,25 +155,25 @@ const pokemonContainerVisibilityRight = document.getElementById(
 const pokemonImageLeft = document.getElementById("pokemon-image-left");
 const pokemonAboutLeft = document.getElementById("pokemon-about-left");
 pokemonImageLeft.addEventListener("load", function () {
-  setTimeout(() => {
-    pokemonImageLeft.classList.remove("poke-img-hide");
-    pokemonImageLeft.classList.add("poke-img-show");
+  // setTimeout(() => {
+  pokemonImageLeft.classList.remove("poke-img-hide");
+  pokemonImageLeft.classList.add("poke-img-show");
 
-    pokemonAboutLeft.classList.remove("slide-in-hide");
-    pokemonAboutLeft.classList.add("slide-in-show");
-  }, 200);
+  pokemonAboutLeft.classList.remove("slide-in-hide");
+  pokemonAboutLeft.classList.add("slide-in-show");
+  // }, 200);
 });
 
 const pokemonImageRight = document.getElementById("pokemon-image-right");
 const pokemonAboutRight = document.getElementById("pokemon-about-right");
 pokemonImageRight.addEventListener("load", function () {
-  setTimeout(() => {
-    pokemonImageRight.classList.remove("poke-img-hide");
-    pokemonImageRight.classList.add("poke-img-show");
+  // setTimeout(() => {
+  pokemonImageRight.classList.remove("poke-img-hide");
+  pokemonImageRight.classList.add("poke-img-show");
 
-    pokemonAboutRight.classList.remove("slide-in-hide");
-    pokemonAboutRight.classList.add("slide-in-show");
-  }, 200);
+  pokemonAboutRight.classList.remove("slide-in-hide");
+  pokemonAboutRight.classList.add("slide-in-show");
+  // }, 200);
 });
 
 //Hiding Loser pokemon container

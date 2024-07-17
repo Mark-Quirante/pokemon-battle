@@ -114,8 +114,10 @@ async function setPokemon() {
     showLoserPokemonContainer(pokemonContainerVisibilityLeft);
     showLoserPokemonContainer(pokemonContainerVisibilityRight);
 
-    fetchPokemon(pokemonName[0], "left");
-    fetchPokemon(pokemonName[1], "right");
+    await setTimeout(() => {
+      fetchPokemon(pokemonName[0], "left");
+      fetchPokemon(pokemonName[1], "right");
+    }, 500);
 
     // want this to come in
     if (pokemonContainer.style.display !== "flex") {

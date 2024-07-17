@@ -533,14 +533,18 @@ button.white-box:active {
 }
 
 .poke-img-hide {
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out,
+    opacity 0.1s ease-in-out 0.1s;
 
   transform: scale(0) !important;
   filter: brightness(0) invert(1) !important;
+  opacity: 0 !important;
 }
 
 .poke-img-show {
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out,
+    opacity 0.1s ease-in-out 0s;
+  opacity: 1 !important;
 }
 
 .slide-in-hide {

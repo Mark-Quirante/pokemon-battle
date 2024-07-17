@@ -105,7 +105,10 @@ async function setPokemon() {
 		fetchPokemon(pokemonName[1], "right");
 		pokemonContainer.style.display = "flex";
 		generatePokemonButton.style.display = "none";
+		winnerBoxDisplay.style.display = "none";
 		whoWinsButton.style.display = "block";
+		showLoserPokemonContainer(pokemonContainerVisibilityLeft);
+		showLoserPokemonContainer(pokemonContainerVisibilityRight);
 	} catch (error) {
 		console.error("Error fetching data:", error);
 	}
@@ -121,7 +124,35 @@ whoWinsButton.addEventListener("click", win);
 
 whoWinsButton.style.display = "none";
 
+//Winner box displaying pokemon winner
+const winnerBoxDisplay = document.getElementById("winner-box");
+winnerBoxDisplay.style.display = "none";
+
+function winnerBoxDisplayName(winner) {
+	const winnerBoxDisplayName = document.getElementById("winner-box");
+	winnerBoxDisplayName.innerText = winner + " wins!";
+	return winnerBoxDisplayName;
+}
+
+const pokemonContainerVisibilityLeft = document.getElementById(
+	"pokemon-container-left"
+);
+const pokemonContainerVisibilityRight = document.getElementById(
+	"pokemon-container-right"
+);
+
+//Hiding Loser pokemon container
+function hideLoserPokemonContainer(loser) {
+	loser.style.visibility = "hidden";
+}
+
+//Displaying loser pokemon container from last battle
+function showLoserPokemonContainer(loser) {
+	loser.style.visibility = "visible";
+}
+
 function win() {
+	//Variables that contain attack values
 	const pokemonAtkNumLeft = document.getElementById(
 		"pokemon-atk-num-left"
 	).innerHTML;
@@ -129,18 +160,44 @@ function win() {
 		"pokemon-atk-num-right"
 	).innerHTML;
 
+	//Variables that contain defense values
+	const pokemonDefNumLeft = document.getElementById(
+		"pokemon-def-num-left"
+	).innerHTML;
+	const pokemonDefNumRight = document.getElementById(
+		"pokemon-def-num-right"
+	).innerHTML;
+
+	const pokemoneCompareDefenseValue = 1.5;
+
+	const pokemonLeftWinnerName =
+		document.getElementById("pokemon-name-left").innerHTML;
+	const pokemonRightWinnerName =
+		document.getElementById("pokemon-name-right").innerHTML;
+	const pokemonTieWinnerName = "Everyone";
+
 	if (pokemonAtkNumLeft > pokemonAtkNumRight) {
-		const pokemonLeftWinnerName =
-			document.getElementById("pokemon-name-left").innerHTML;
-		alert(pokemonLeftWinnerName + " wins!");
-	} else if (pokemonAtkNumLeft == pokemonAtkNumRight) {
-		alert("It's a tie!");
+		if (pokemonAtkNumLeft / pokemoneCompareDefenseValue < pokemonDefNumRight) {
+			winnerBoxDisplayName(pokemonRightWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
+		} else {
+			winnerBoxDisplayName(pokemonLeftWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityRight);
+		}
+	} else if (pokemonAtkNumLeft < pokemonAtkNumRight) {
+		if (pokemonAtkNumRight / pokemoneCompareDefenseValue < pokemonDefNumLeft) {
+			winnerBoxDisplayName(pokemonLeftWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityRight);
+		} else {
+			winnerBoxDisplayName(pokemonRightWinnerName);
+			hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
+		}
 	} else {
-		const pokemonRightWinnerName =
-			document.getElementById("pokemon-name-right").innerHTML;
-		alert(pokemonRightWinnerName + " wins!");
+		winnerBoxDisplayName(pokemonTieWinnerName);
 	}
+	//Switching out which buttons will appear
 	generatePokemonButton.style.display = "block";
+	winnerBoxDisplay.style.display = "block";
 	generatePokemonButton.innerText = "Regenerate Pokémon";
 	whoWinsButton.style.display = "none";
 }

@@ -195,6 +195,7 @@ ul {
 	border-radius: 50%;
 	background-color: white;
 	z-index: -100;
+	visibility: visible !important;
 }
 
 .image-wrapper > img {

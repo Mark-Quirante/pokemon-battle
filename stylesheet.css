@@ -206,22 +206,34 @@ button.white-box:active {
   visibility: visible !important;
 }
 
-.image-wrapper > img {
+.image-wrapper > .poke-img {
   max-width: 100%;
   transform: scale(2) translateY(-35%);
+}
+
+.poke-load {
+  position: absolute;
+  bottom: -15px;
+  transform: scale(1);
+  width: 50px;
+  height: auto;
 }
 
 #pokemon-image-left {
   transform: scale(-2, 2) translateY(-35%);
 }
 
-#pokemon-container-right:hover > .image-wrapper > img,
-#pokemon-container-right:focus > .image-wrapper > img {
+#pokemon-container-left > .image-wrapper > .poke-load {
+  transform: scale(-1, 1);
+}
+
+#pokemon-container-right:hover > .image-wrapper > .poke-img,
+#pokemon-container-right:focus > .image-wrapper > .poke-img {
   transform: scale(2.2) translateY(-35%);
 }
 
-#pokemon-container-left:hover > .image-wrapper > img,
-#pokemon-container-left:focus > .image-wrapper > img {
+#pokemon-container-left:hover > .image-wrapper > .poke-img,
+#pokemon-container-left:focus > .image-wrapper > .poke-img {
   transform: scale(-2.2, 2.2) translateY(-35%);
 }
 
@@ -385,7 +397,7 @@ button.white-box:active {
     max-width: 400px;
   }
 
-  .image-wrapper > img {
+  .image-wrapper > .poke-img {
     max-width: 100%;
     transform: scale(2.5) translateY(-35%);
   }
@@ -394,13 +406,13 @@ button.white-box:active {
     transform: scale(-2.5, 2.5) translateY(-35%);
   }
 
-  #pokemon-container-right:hover > .image-wrapper > img,
-  #pokemon-container-right:focus > .image-wrapper > img {
+  #pokemon-container-right:hover > .image-wrapper > .poke-img,
+  #pokemon-container-right:focus > .image-wrapper > .poke-img {
     transform: scale(2.7) translateY(-35%);
   }
 
-  #pokemon-container-left:hover > .image-wrapper > img,
-  #pokemon-container-left:focus > .image-wrapper > img {
+  #pokemon-container-left:hover > .image-wrapper > .poke-img,
+  #pokemon-container-left:focus > .image-wrapper > .poke-img {
     transform: scale(-2.7, 2.7) translateY(-35%);
   }
 
@@ -444,6 +456,42 @@ button.white-box:active {
   }
 }
 
+@keyframes pokeBallTwitchRight {
+  from {
+    transform: translateY(-35%) rotate(20deg);
+  }
+
+  25% {
+    transform: translateY(-35%) rotate(0deg);
+  }
+
+  75% {
+    transform: translateY(-35%) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(-35%) rotate(20deg);
+  }
+}
+
+@keyframes pokeBallTwitchLeft {
+  from {
+    transform: scale(-1, 1) translateY(-35%) rotate(20deg);
+  }
+
+  25% {
+    transform: scale(-1, 1) translateY(-35%) rotate(0deg);
+  }
+
+  75% {
+    transform: scale(-1, 1) translateY(-35%) rotate(0deg);
+  }
+
+  to {
+    transform: scale(-1, 1) translateY(-35%) rotate(20deg);
+  }
+}
+
 /****************************
       Animation Classes
 *****************************/
@@ -453,6 +501,14 @@ button.white-box:active {
 
 .slide-fade-in-from-bottom {
   animation: slideFadeInFromBottom 0.75s ease-in-out 0s 1 forwards;
+}
+
+.poke-ball-twitch-right {
+  animation: pokeBallTwitchRight 1s ease-out 0s infinite;
+}
+
+.poke-ball-twitch-left {
+  animation: pokeBallTwitchLeft 1s ease-out 0s infinite;
 }
 
 .shrink-out-before {

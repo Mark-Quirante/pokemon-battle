@@ -168,33 +168,45 @@ function win() {
 		"pokemon-def-num-right"
 	).innerHTML;
 
-	const pokemoneCompareDefenseValue = 1.5;
+	const pokemoneCompareDefenseValue = 1.3;
+
+	const pokemonHpNumLeft = document.getElementById(
+		"pokemon-hp-num-left"
+	).innerHTML;
+	const pokemonHpNumRight = document.getElementById(
+		"pokemon-hp-num-right"
+	).innerHTML;
 
 	const pokemonLeftWinnerName =
 		document.getElementById("pokemon-name-left").innerHTML;
 	const pokemonRightWinnerName =
 		document.getElementById("pokemon-name-right").innerHTML;
-	const pokemonTieWinnerName = "Everyone";
+	const pokemonTieOutcome = "No One";
 
-	if (pokemonAtkNumLeft > pokemonAtkNumRight) {
-		if (pokemonAtkNumLeft / pokemoneCompareDefenseValue < pokemonDefNumRight) {
-			winnerBoxDisplayName(pokemonRightWinnerName);
-			hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
-		} else {
-			winnerBoxDisplayName(pokemonLeftWinnerName);
-			hideLoserPokemonContainer(pokemonContainerVisibilityRight);
-		}
-	} else if (pokemonAtkNumLeft < pokemonAtkNumRight) {
-		if (pokemonAtkNumRight / pokemoneCompareDefenseValue < pokemonDefNumLeft) {
-			winnerBoxDisplayName(pokemonLeftWinnerName);
-			hideLoserPokemonContainer(pokemonContainerVisibilityRight);
-		} else {
-			winnerBoxDisplayName(pokemonRightWinnerName);
-			hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
-		}
+	// winnerBoxDisplayName(pokemonRightWinnerName);
+	// winnerBoxDisplayName(pokemonLeftWinnerName);
+	// winnerBoxDisplayName(pokemonTieOutcome);
+	// hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
+	// hideLoserPokemonContainer(pokemonContainerVisibilityRight);
+
+	if (
+		pokemonAtkNumLeft > pokemonAtkNumRight ||
+		(pokemonAtkNumLeft / pokemoneCompareDefenseValue > pokemonDefNumRight &&
+			pokemonAtkNumLeft > pokemonHpNumRight)
+	) {
+		winnerBoxDisplayName(pokemonLeftWinnerName);
+		hideLoserPokemonContainer(pokemonContainerVisibilityRight);
+	} else if (
+		pokemonAtkNumRight > pokemonAtkNumLeft ||
+		(pokemonAtkNumRight / pokemoneCompareDefenseValue > pokemonDefNumLeft &&
+			pokemonAtkNumRight > pokemonHpNumLeft)
+	) {
+		winnerBoxDisplayName(pokemonRightWinnerName);
+		hideLoserPokemonContainer(pokemonContainerVisibilityLeft);
 	} else {
-		winnerBoxDisplayName(pokemonTieWinnerName);
+		winnerBoxDisplayName(pokemonTieOutcome);
 	}
+
 	//Switching out which buttons will appear
 	generatePokemonButton.style.display = "block";
 	winnerBoxDisplay.style.display = "block";
